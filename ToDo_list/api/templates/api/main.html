@@ -1,0 +1,25 @@
+{% extends 'api/base.html' %}
+
+{% block title %}
+ToDo-App
+{% endblock %}
+
+{% block content %}
+
+<h1> Lists </h1>
+    
+    <ul>
+      {%for  item in own_object %}
+          <li><a href = {{item.id}} target = _blank> {{item.list_name}} </a></li>
+ 
+      {% endfor %} 
+    </ul>
+<form action  = "" method = "post">
+    
+    {% csrf_token %} 
+    {{form_object}}
+    
+    <input type = "submit"> 
+</form>
+
+{% endblock %}

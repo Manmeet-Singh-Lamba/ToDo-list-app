@@ -1,0 +1,25 @@
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} ToDO app {% endblock %} </title>
+    {% load static %}
+    <link rel = "stylesheet" href = {% static 'api/styling_code.css' %}  >
+  
+</head>
+
+<body>
+    <main>
+        <div id = "content" name = "content">
+            {% block content %}
+            <h1> Hey </h1>
+            {% endblock %}
+        </div>
+        <div id = "footer-content" name = "footer">
+            {% block footer %}
+            
+            {% endblock %}
+        </div>
+    </main>
+</body>
+
+</html>

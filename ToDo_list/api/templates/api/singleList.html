@@ -1,0 +1,17 @@
+{% extends 'api/base.html' %}
+
+{% block title %}
+{{parent_obj}}
+{% endblock %}
+
+{% block content %}
+
+<h1> {{parent_obj}} </h1>
+    
+    <ul>
+        {%for  item in own_object %}
+            <li> {{item.task_name}} </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
