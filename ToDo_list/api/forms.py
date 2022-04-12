@@ -5,7 +5,7 @@ from .models import List, Task
 class ListForm(forms.ModelForm):
     class Meta:
         model = List
-        fields = '__all__'
+        fields = ["list_name", "status"]
 
 class TaskForm(forms.ModelForm):
     class Meta:

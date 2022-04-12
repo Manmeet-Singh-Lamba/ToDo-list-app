@@ -10,13 +10,11 @@
 <body>
     <main>
         <div id = "content" name = "content">
-            {% if user.is_authenticated %}
+            
                 {% block content %}
                 <h1> Hey </h1>
                 {% endblock %}
-            {% else %}
-                <p>Login <a href = {% url 'login' %} >Here</p>
-            {% endif %}
+
         </div>
         <div id = "footer-content" name = "footer">
             {% block footer %}

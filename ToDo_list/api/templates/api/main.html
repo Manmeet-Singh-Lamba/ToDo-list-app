@@ -6,7 +6,7 @@ ToDo-App
 
 {% block content %}
 
-<h1> Lists </h1>
+<h1> {{user_name}} List's </h1>
     
     <ul>
       {%for  item in own_object %}
@@ -14,12 +14,14 @@ ToDo-App
  
       {% endfor %} 
     </ul>
-<form action  = "" method = "post">
+<div id = "form_div">
+    
+<form action  = "" method = "POST">
     
     {% csrf_token %} 
-    {{form_object}}
+    {{form_object.as_p}}
     
-    <input type = "submit"> 
+    <input type = "submit" value = "save"> 
 </form>
-
+</div>
 {% endblock %}

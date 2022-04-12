@@ -5,5 +5,5 @@ from .models import List
 class ListSerializer(serializers.ModelSerializer):
     class Meta:
         model = List
-        fields = ('id', 'list_name', 'task_name', 'task_description', 'status', 'created_at')
+        fields = __all__
 

@@ -1,7 +1,7 @@
 from subprocess import CompletedProcess
 from tkinter import CASCADE
 from django.db import models
-import string
+from django.contrib.auth.models import User
 
 def generate_unique_code():
     length = 6
@@ -11,6 +11,7 @@ def generate_unique_code():
 
 # Create your models here.
 class List(models.Model):
+    user                = models.ForeignKey(User, on_delete=models.CASCADE)
     list_name           = models.CharField(max_length = 50, default="", unique=True)
     status              = models.BooleanField(null=False, default =  False)
     created_at          = models.DateTimeField(auto_now_add=True)
