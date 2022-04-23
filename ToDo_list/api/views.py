@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import List
+from .models import List, Task
 from .forms import ListForm, TaskForm
 
 
@@ -22,15 +22,46 @@ def main(request):
     #own_object = List.objects.get(id = 1)
     #return HttpResponse("<h1>Hello</h1> <style> h1 {color: blue;}</style>")
 
-def singleList_view(request, name):
+def singleList_view(request, list_id):
     #name = List.objects.get(id = name)
-    name = get_object_or_404(List, id = name)
-    if name.user == request.user:
-        obj = name.task_set.all()
-        return render(request, "api/singleList.html", {"parent_obj": name , "own_object" : obj})
+    list_object = get_object_or_404(List, id = list_id)
+    user_name = request.user
+    
+    if request.method == 'POST':
+        form_object = TaskForm(request.POST or None)
+        if form_object.is_valid():
+            form_object = form_object.save(commit = False)
+            form_object.user = request.user
+            form_object.save()
+    else:
+        form_object = TaskForm()
+
+    if list_object.user == request.user:
+        obj = list_object.task_set.all()
+        return render(request, "api/singleList.html", {"parent_obj": list_object , "own_object" : obj, "form": form_object})
     else:
         return HttpResponse("<h1>Page not available</h1> <style> h1 {color: blue;}</style>")
 
-def login(request):
-    return render(request, "api/login.html", {})
+def deleteList_view(request, list_id):
+    list_object = get_object_or_404(List, id = list_id)
+    list_object.delete()
+    return redirect('main')
+
+def deleteTask_view(request, task_id, list_id):
+    list_object = get_object_or_404(List, id = list_id)
+    task_object = get_object_or_404(Task, id = task_id)
+    task_object.delete()
+    return redirect('single-list', list_id)
+
+def editList_view(request, list_id):
+    user_name = request.user
+    list_object = get_object_or_404(List, id = list_id)
+    
+    form = ListForm(request.POST or None, instance = list_object)
+    if form.is_valid():
+        form.save()
+        return redirect('main')
+    else:
+        return render(request, "api/editList.html", {"list_object":list_object, "user_name":user_name, "form": form})
+    
     

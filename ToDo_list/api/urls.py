@@ -20,6 +20,13 @@ from . import views
 
 urlpatterns = [
     path('main/', views.main, name ='main'),
-    path('<int:name>', views.singleList_view), 
-    path('', views.main)
+    path('main/<int:list_id>/', views.singleList_view, name = 'single-list'), 
+    path('<int:list_id>/', views.singleList_view), 
+    path('', views.main),
+    path('delete/<int:list_id>/', views.deleteList_view),
+    path('main/delete/<int:list_id>/', views.deleteList_view),
+    path('<int:list_id>/delete/<int:task_id>/', views.deleteTask_view),
+    path('main/<int:list_id>/delete/<int:task_id>/', views.deleteTask_view),
+    path('edit/<int:list_id>/', views.editList_view, name = 'edit-list'),
+    path('main/edit/<int:list_id>', views.editList_view, name = 'edit-list')
 ]

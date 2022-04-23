@@ -1,0 +1,17 @@
+{% extends 'api/base.html' %}
+
+{% block title %}
+{{list_obj}}
+{% endblock %}
+
+{% block content %}
+
+    <h1> Update the List </h1>
+    <br>
+    <form action ="" method= "POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <input type = 'submit' value = 'Update'>
+    </form>
+{% endblock %}

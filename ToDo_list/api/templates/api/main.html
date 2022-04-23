@@ -6,22 +6,46 @@ ToDo-App
 
 {% block content %}
 
-<h1> {{user_name}} List's </h1>
-    
-    <ul>
+<h1> {{user_name}}'s Lists </h1>
+<br>
+<div id = "list_div">    
+    <table >
       {%for  item in own_object %}
-          <li><a href = {{item.id}} target = _blank> {{item.list_name}} </a></li>
+          <tr>
+              <td>
+                {% if item.status == True %}
+                    <text> Completed </text>
+                {% else %}
+                    <text> Pending </text>
+                {% endif %}
+              </td>
+              <td>
+                <a href = {{item.id}} target = _blank> {{item.list_name}} </a>
+              </td>
+              <td align = "right">  
+                <form action='delete/{{item.id}}'>
+                  <input type="submit" value="Delete" />
+                </form>
+              </td>
+              <td align = "right"> 
+                <form action='edit/{{item.id}}'>
+                  <input type="submit" value="Edit" />
+                </form>
+              </td>  
+          </tr>
  
       {% endfor %} 
-    </ul>
-<div id = "form_div">
-    
-<form action  = "" method = "POST">
-    
-    {% csrf_token %} 
-    {{form_object.as_p}}
-    
-    <input type = "submit" value = "save"> 
-</form>
+    </table>
+  </div>
+<div id = "add_list_div">
+  
+  <form action  = "" method = "POST">
+    <h2>Add a new list</h2>  
+      <br>
+      {% csrf_token %} 
+      {{form_object.as_p}}
+      
+      <input type = "submit" value = "save"> 
+  </form>
 </div>
 {% endblock %}

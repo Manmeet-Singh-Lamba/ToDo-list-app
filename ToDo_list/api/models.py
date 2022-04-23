@@ -22,7 +22,7 @@ class List(models.Model):
 class Task(models.Model):
     todolist            = models.ForeignKey(List, on_delete=models.CASCADE)
     task_name           = models.CharField(max_length = 50, default="", unique=True)
-    task_description    = models.TextField(max_length= 160, default = "describe the task here")
+    task_description    = models.TextField(max_length= 160, default = "")
     Completed           = models.BooleanField(null=False, default =  False)
 
     def __str__(self) -> str:

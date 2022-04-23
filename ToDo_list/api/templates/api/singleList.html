@@ -4,14 +4,57 @@
 {{parent_obj}}
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
-<h1> {{parent_obj}} </h1>
-    
-    <ul>
+<div id = "item_list_div">
+    <h1> {{parent_obj}} </h1>
+    <br>
+    <table>
+        <th>
+            Status
+        </th>
+        <th>
+            Task
+        </th>
+        <th>
+            Description
+        </th>
         {%for  item in own_object %}
-            <li> {{item.task_name}} </li>
+            <tr> 
+                <td>
+                    {% if item.Completed == True %}
+                        <text> completed </text>
+                    {% else %}
+                        <text> pending </text>
+                    {% endif %}
+                </td>
+                <td> 
+                    {{item.task_name}} 
+                </td>
+                <td>
+                    {{item.task_description}}
+                </td>
+                <td >  
+                    <form action='delete/{{item.id}}'>
+                      <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
+</div>
 
+<div id = "add_task_div">
+  
+  <form action  = "" method = "POST">
+    <h2>Add a new task</h2>  
+      <br>
+      {% csrf_token %} 
+      {{form.as_p}}
+      
+      <input type = "submit" value = "save"> 
+  </form>
+</div>
 {% endblock %}

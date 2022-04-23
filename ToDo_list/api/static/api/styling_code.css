@@ -17,7 +17,7 @@ header{
 }
 
 main{
-	background: rgba(202, 229, 241, 0.4);
+	background: rgba(241, 240, 200, 0.4);
 	text-align:  left;
 }
 
@@ -40,7 +40,8 @@ nav a{
 	width:  23%;
 	background: rgba(0, 150, 100, .5);
 }
- nav a:hover{
+
+nav a:hover{
  	background: rgba(0, 150, 400, .7);
 }
 
@@ -49,23 +50,59 @@ nav a{
  }
  */
 
- .cover_image{
+.cover_image{
  	width: 100%; 
  	height: 230px;
  	object-fit: cover;
  } 
 
- form {
+form {
 	background: rgba(10, 250, 174, 0.925);
+	font-family: 'Quicksand', sans-serif;
+	
  }
 
-a {
+ #list_div a {
 	display:  inline-block;
-	width:  80%;
-	background: rgba(16, 168, 238, 0.856);
+	width:  90%;
+	background: rgba(25, 174, 243, 0.741);
 }
 
-a:hover{
+#list_div a:hover{
 	color: rgba(235, 235, 241, 0.99);
  	background: rgba(16, 57, 238, 0.856);
 } 
+
+#list_div form {
+	background: rgba(251, 251, 251, 0.925);
+	display: inline;
+	font-family: 'Quicksand', sans-serif; 
+}
+
+#list_div table {
+	width: 95%;
+	margin: 2px;
+	padding:  3px;
+	font-family: 'Quicksand', sans-serif; 
+	
+}
+
+th, td {
+	border-bottom: 1px solid rgb(118, 116, 116);
+	text-align: left;
+	padding:  3px;
+  }
+
+tr:hover {background-color: coral;}
+
+#item_list_div table {
+	width: 95%;
+	margin: 2px;
+	padding:  3px;
+	font-family: 'Quicksand', sans-serif;
+	background:  rgba(228, 237, 55, 0.697);
+}
+
+#item_list_div form { 
+	display: inline;
+}
