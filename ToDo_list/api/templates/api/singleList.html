@@ -31,15 +31,57 @@
                     {% endif %}
                 </td>
                 <td> 
-                    {{item.task_name}} 
+                    {% if item.Completed == True %}
+                        <text> <s>{{item.task_name}}</s> </text>
+                    {% else %}
+                        {{item.task_name}}
+                    {% endif %}
+                     
                 </td>
                 <td>
-                    {{item.task_description}}
+                    {% if item.Completed == True %}
+                        <text> <s>{{item.task_description}}</s> </text>
+                    {% else %}
+                        {{item.task_description}}
+                    {% endif %}
                 </td>
                 <td >  
                     <form action='delete/{{item.id}}'>
                       <input type="submit" value="Delete" />
                     </form>
+                </td>
+                <td>
+                    <form action='edit/{{item.id}}'>
+                        <input type="submit" value="Edit" />
+                    </form>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="dropbtn"> Move </button>
+                        <div class="dropdown-content">
+                            {% for elements in user_lists%}
+                                <a href= '{{item.id}}/move_to/{{elements.id}}' > {{elements.list_name}} </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+              <!---      <details close> 
+                        <summary> Move </summary>
+                            <form action='edit/{{item.id}}' method = "POST">  
+                                <ul>
+                                    {% for elements in user_lists%}
+                                        <li>
+                                           <a href = > {{elements.list_name}} </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul> 
+                                 {% csrf_token %} 
+                                {{form.as_p}}
+                                
+                                <input type = "submit" value = "save"> 
+                               
+                            </form>  
+                    </details> -->
                 </td>
             </tr>
         {% endfor %}
@@ -47,14 +89,15 @@
 </div>
 
 <div id = "add_task_div">
-  
-  <form action  = "" method = "POST">
-    <h2>Add a new task</h2>  
-      <br>
-      {% csrf_token %} 
-      {{form.as_p}}
-      
-      <input type = "submit" value = "save"> 
-  </form>
+    <br>
+    <details close> <summary><b>Add a new task</b></summary>
+        <form action  = "" method = "POST">
+            <br>
+            {% csrf_token %} 
+            {{form.as_p}}
+            
+            <input type = "submit" value = "save"> 
+        </form>
+    </details>
 </div>
 {% endblock %}

@@ -6,10 +6,30 @@ ToDo-App
 
 {% block content %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+      <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> 
+        {{ message }} 
+      </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 <h1> {{user_name}}'s Lists </h1>
 <br>
 <div id = "list_div">    
     <table >
+      <th>
+        Status
+      </th>
+      <th>
+        To-Do
+      </th>
+      <th>
+        created on
+      </th>
       {%for  item in own_object %}
           <tr>
               <td>
@@ -21,6 +41,9 @@ ToDo-App
               </td>
               <td>
                 <a href = {{item.id}} target = _blank> {{item.list_name}} </a>
+              </td>
+              <td>
+                {{item.created_at}}
               </td>
               <td align = "right">  
                 <form action='delete/{{item.id}}'>
@@ -36,16 +59,20 @@ ToDo-App
  
       {% endfor %} 
     </table>
-  </div>
+</div>
+
 <div id = "add_list_div">
-  
-  <form action  = "" method = "POST">
-    <h2>Add a new list</h2>  
-      <br>
-      {% csrf_token %} 
-      {{form_object.as_p}}
-      
-      <input type = "submit" value = "save"> 
-  </form>
+  <br>
+  <details close> <summary><b>Add a new list</b></summary>
+    <form action  = "" method = "POST">  
+        <br>
+        {% csrf_token %} 
+        {{form_object.as_p}}
+        
+        <input type = "submit" value = "save"> 
+    </form>
+  </details>
 </div>
 {% endblock %}
+
+

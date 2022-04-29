@@ -21,8 +21,6 @@ main{
 	text-align:  left;
 }
 
-
-
 footer{
 	background: rgba(180, 190, 200, 0.6);
 	overflow: scroll;
@@ -62,10 +60,11 @@ form {
 	
  }
 
- #list_div a {
+#list_div a {
 	display:  inline-block;
 	width:  90%;
 	background: rgba(25, 174, 243, 0.741);
+	color:rgba(14, 14, 63, 0.99)
 }
 
 #list_div a:hover{
@@ -86,18 +85,25 @@ form {
 	font-family: 'Quicksand', sans-serif; 
 	
 }
+th{
+	background-color: rgba(190, 140, 238, 0.716);
+}
+
 
 th, td {
 	border-bottom: 1px solid rgb(118, 116, 116);
 	text-align: left;
 	padding:  3px;
+	max-width: 600px;
+	word-wrap: break-word;
   }
 
-tr:hover {background-color: coral;}
+tr:hover {background-color: rgb(248, 188, 7);}
 
 #item_list_div table {
+	/*table-layout:fixed;	*/
 	width: 95%;
-	margin: 2px;
+	margin: 10px;
 	padding:  3px;
 	font-family: 'Quicksand', sans-serif;
 	background:  rgba(228, 237, 55, 0.697);
@@ -106,3 +112,55 @@ tr:hover {background-color: coral;}
 #item_list_div form { 
 	display: inline;
 }
+
+#add_list_div details { 
+	background-color: rgba(13, 215, 151, 0.925);
+}
+
+#add_list_div details { 
+	font-family: 'Quicksand', sans-serif;
+}
+
+#add_task_div details { 
+	background-color: rgba(13, 215, 151, 0.925);
+}
+
+#add_task_div details { 
+	font-family: 'Quicksand', sans-serif;
+}
+
+
+.dropbtn {
+	background-color:  rgba(13, 215, 151, 0.925);
+	color: rgba(5, 6, 6, 0.925);
+	padding: 5px;
+	font-size: 16px;
+	border: none;
+  }
+  
+  .dropdown {
+	position: relative;
+	display: inline-block;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: rgba(5, 6, 6, 0.925);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}

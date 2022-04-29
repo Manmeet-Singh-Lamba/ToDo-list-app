@@ -28,5 +28,9 @@ urlpatterns = [
     path('<int:list_id>/delete/<int:task_id>/', views.deleteTask_view),
     path('main/<int:list_id>/delete/<int:task_id>/', views.deleteTask_view),
     path('edit/<int:list_id>/', views.editList_view, name = 'edit-list'),
-    path('main/edit/<int:list_id>', views.editList_view, name = 'edit-list')
+    path('main/edit/<int:list_id>', views.editList_view, name = 'edit-list'),
+    path('<int:list_id>/edit/<int:task_id>/', views.editTask_view, name = 'edit-task'),
+    path('main/<int:list_id>/edit/<int:task_id>/', views.editTask_view, name = 'edit-task'),
+    path('<int:list_id>/<int:task_id>/move_to/<int:destinationList_id>/', views.moveTask_view, name = 'move-task'),
+    path('main/<int:list_id>/<int:task_id>/move_to/<int:destinationList_id>/', views.moveTask_view, name = 'move-task')
 ]
